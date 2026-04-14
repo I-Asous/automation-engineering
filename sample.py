@@ -64,3 +64,6 @@ else:
         distance = call["Extensions"]["Distances"]["PresentableDistance"]
         
         print(f" IT'S {mins} min away  ({distance})")
+        
+
+#Next goal: using twilio set up a way to text me bus the output
