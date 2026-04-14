@@ -18,7 +18,7 @@ API_KEY = os.getenv("MTA_API_KEY")
 #MTA stop ID for 21 St / Ditmars Blvd, heading towards steinway
 STOP_ID = "553077"
 
-url = "https://bustime.mta.info/api/siri/stop-monitoring.json"
+URL = "https://bustime.mta.info/api/siri/stop-monitoring.json"
 
 params = {
     "key": API_KEY,
@@ -31,7 +31,7 @@ params = {
 }
 
 #Get request from MTA API
-response = requests.get(url, params=params)
+response = requests.get(URL, params=params)
 #parsing the response into a dict
 data = response.json()
 
@@ -46,24 +46,24 @@ else:
     for bus in visits[:3]:
          # MonitoredCall contains arrival info for this specific stop
         call = bus["MonitoredVehicleJourney"]["MonitoredCall"]
-        
+
         # ExpectedArrivalTime is real-time — use AimedArrivalTime as backup plan
         eta_str = call.get("ExpectedArrivalTime") or call.get("AimedArrivalTime")
-        
+
         # convert the ISO timestamp string into a datetime object
         eta = datetime.fromisoformat(eta_str)
-        
+
         # get the current time in UTC so we can compare with the ETA
         now = datetime.now(timezone.utc)
-        
+
         # calculate how many minutes until the bus arrives
         #However, show neg minutes if its passed
         mins = max(0, int((eta - now).total_seconds() // 60))
-        
+
         #PresentableDistance is a string which tells us the distance from stop
         distance = call["Extensions"]["Distances"]["PresentableDistance"]
-        
-        print(f" IT'S {mins} min away  ({distance})")
-        
 
-#Next goal: using twilio set up a way to text me bus the output
+        print(f" IT'S {mins} min away  ({distance})")
+
+
+#Next goal: using twilio set up a way to text me bus the output 
