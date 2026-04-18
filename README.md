@@ -1,5 +1,5 @@
 ### Automation Engineering Project
-Overview for sample.py
+Overview for sample.py,
 This project monitors the Q69 bus at the 21 St / Ditmars Blvd stop and sends a text message to my cell with the next arrival times.
 
 It integrates:
@@ -8,7 +8,7 @@ It integrates:
 - Environment-based configuration for security
 
 Tech Stack:
-Python
-Requests (API calls)
-Twilio API (SMS delivery)
-python-dotenv (environment variables)
+- Python
+- Requests (API calls)
+- Twilio API (SMS delivery)
+- python-dotenv (environment variables)
