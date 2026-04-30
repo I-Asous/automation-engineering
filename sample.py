@@ -70,7 +70,8 @@ def get_q69_arrivals() -> str:
         mins = max(0, round((eta - now).total_seconds() / 60)) # new formula, trying to see if its more accurate for the first sotp
         # PresentableDistance is a string which tells us the distance from stop
         distance = call["Extensions"]["Distances"]["PresentableDistance"]
-        lines.append(f" IT'S {mins} min away  ({distance})")
+        lines.append(f" IT'S {mins} min away  ({distance})\n")
+
 
     return "\n".join(lines)
 
